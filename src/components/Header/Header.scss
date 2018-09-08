@@ -2,37 +2,40 @@
 
 $brand-color: #61dafb;
 
-:local(.root) {
+.root {
+	height: $header-height;
+	position: relative;
   background: #373277;
+  background: $red-base;
   color: #fff;
 }
 
-:local(.container) {
+.container {
   margin: 0 auto;
   padding: 20px 0;
   max-width: $max-content-width;
 }
 
-:local(.brand) {
+.brand {
   color: lighten($brand-color, 10%);
   text-decoration: none;
   font-size: 1.75em; /* ~28px */
 }
 
-:local(.brandTxt) {
+.brandTxt {
   margin-left: 10px;
 }
 
-:local(.nav) {
+.nav {
   float: right;
   margin-top: 6px;
 }
 
-:local(.banner) {
+.banner {
   text-align: center;
 }
 
-:local(.bannerTitle) {
+.bannerTitle {
   margin: 0;
   padding: 10px;
   font-weight: normal;
@@ -40,9 +43,43 @@ $brand-color: #61dafb;
   line-height: 1em;
 }
 
-:local(.bannerDesc) {
+.bannerDesc {
   padding: 0;
   color: rgba(255, 255, 255, .5);
   font-size: 1.25em;
   margin: 0;
+}
+
+.hamburger {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 1em;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Rotate first bar */
+.active .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.active .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.active .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
 }

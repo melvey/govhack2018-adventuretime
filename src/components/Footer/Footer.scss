@@ -1,0 +1,34 @@
+@import '../variables.scss';
+
+:local(.root) {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #373277;
+  background: $red-base;
+  color: #fff;
+}
+
+:local(.container) {
+  margin: 0 auto;
+  padding: 20px 0;
+  max-width: $max-content-width;
+}
+:local(.banner) {
+  text-align: center;
+}
+
+:local(.bannerTitle) {
+  margin: 0;
+  padding: 10px;
+  font-weight: normal;
+  font-size: 4em;
+  line-height: 1em;
+}
+
+:local(.bannerDesc) {
+  padding: 0;
+  color: rgba(255, 255, 255, .5);
+  font-size: 1.25em;
+  margin: 0;
+}

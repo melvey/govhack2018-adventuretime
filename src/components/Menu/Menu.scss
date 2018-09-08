@@ -1,0 +1,35 @@
+@import '../variables.scss';
+
+$bg-colour: #f2f2f2;
+$fg-color: #4f4f4f;
+$width: 15rem;
+
+.container {
+	position: absolute;
+	top: $header-height;
+	height: calc(100vh - #{$header-height});
+	left: -$width;
+	width: $width;
+	text-align: left;
+	padding-left: 1rem;
+	background-color: $bg-colour;
+	color: #4f4f4f;
+	font-size: 1.2rem;
+	transition: left 0.5s;
+
+	h2 {
+		font-size: 1.2rem;
+		font-weight: normal;
+	}
+
+}
+
+.active {
+	left: 0;
+}
+
+.item {
+	padding-left: 2rem;
+}
+
+
