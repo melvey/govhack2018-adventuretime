@@ -1,0 +1,6 @@
+{
+  "name": "CycleMap",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CycleMap.jsx"
+}
