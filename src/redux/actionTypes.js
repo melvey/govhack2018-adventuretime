@@ -6,5 +6,7 @@
 export default {
 	setDummy: 'setDummy',
 	toggleMenu: 'toggleMenu',
-	setLocation: 'setLocation'
+	setLocation: 'setLocation',
+	setParking: 'setParking',
+	showParking: 'showParking'
 };

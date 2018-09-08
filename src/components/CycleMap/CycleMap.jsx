@@ -31,10 +31,10 @@ class CycleMap extends Component {
 		const width = window.innerWidth;
 		this.setState({width, height, addMap: true});
 		this.props.loadLocation();
+		this.props.loadParking();
 	}
 
 	componentDidUpdate() {
-		console.log('state', this.state);
 		if(this.state.addMap) {
 			this.loadMap();
 			this.setState({addMap: false});
@@ -51,9 +51,26 @@ class CycleMap extends Component {
 		this.setState({map: mymap});
 	}
 
+	showParking = (parking) => {
+		if(this.state.markers) {
+			this.state.markers.forEach((marker) => marker.remove());
+		}
+
+		const markers = parking.map((point) => {
+			const marker = L.marker([point.lat, point.lon]);
+			marker.addTo(this.state.map);
+			return marker;
+		});
+		this.setState({parkingMarkers: markers});
+	}
+
 	componentWillReceiveProps(props) {
 		if(this.props.location != props.location && this.state.map) {
 			this.state.map.setView([props.location.latitude, props.location.longitude], 13);
+		}
+
+		if(this.props.parking != props.parking && this.state.map) {
+			this.showParking(props.parking);
 		}
 	}
 
