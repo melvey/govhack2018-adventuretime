@@ -4,8 +4,8 @@
 **/
 
 import {combineReducers} from 'redux';
-import dummyReducer from './DummyReducer';
+import menuReducer from './MenuReducer';
 
 export default combineReducers({
-	dummy: dummyReducer
+	menu: menuReducer
 });

@@ -8,6 +8,7 @@ import Menu from '../Menu';
 class Header extends Component {
 	static propTypes = {
 		menuOpen: PropTypes.bool,
+		menuFunc: PropTypes.func
 	};
 
   constructor(props) {
@@ -21,10 +22,12 @@ class Header extends Component {
   toggleMenu(e) {
     console.log(e.target);
     //e.target.classList.toggle(styles.change);
+		this.props.menuFunc();
   }
 
   render() {
-		const active = this.props.toggleMenu;
+		const active = this.props.menuOpen;
+		console.log(this.props);
 
 		return (
 				<div className={styles.root}>
