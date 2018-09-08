@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Route, Switch} from 'react-router-dom';
 import Header from '../Header';
+import Footer from '../Footer';
 import styles from './App.scss';
 import Index from '../Index';
 import About from '../About';
@@ -31,6 +32,7 @@ class App extends Component {
 					<Route component={NotFound} />
 				</Switch>
 			</div>
+			<Footer />
 		</div>
 	);
 	}

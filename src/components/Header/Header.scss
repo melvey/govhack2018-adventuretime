@@ -4,6 +4,7 @@ $brand-color: #61dafb;
 
 :local(.root) {
   background: #373277;
+  background: $red-base;
   color: #fff;
 }
 
@@ -45,4 +46,38 @@ $brand-color: #61dafb;
   color: rgba(255, 255, 255, .5);
   font-size: 1.25em;
   margin: 0;
+}
+
+.hamburger {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 1em;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
 }
