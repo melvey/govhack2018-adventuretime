@@ -5,7 +5,9 @@
 
 import {combineReducers} from 'redux';
 import menuReducer from './MenuReducer';
+import mapReducer from './MapReducer';
 
 export default combineReducers({
-	menu: menuReducer
+	menu: menuReducer,
+	map: mapReducer
 });
