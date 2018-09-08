@@ -30,7 +30,6 @@ class CycleMap extends Component {
 	}
 
 	componentDidUpdate() {
-		console.log('drawn stuff bruta');
 		console.log('state', this.state);
 		if(this.state.addMap) {
 			this.loadMap();
@@ -39,7 +38,6 @@ class CycleMap extends Component {
 	}
 
 	loadMap() {
-		console.log('load map');
 		var mymap = L.map('cyclemap').setView([51.505, -0.09], 13);
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
