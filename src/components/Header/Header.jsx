@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styles from './Header.scss';
 import {Link} from 'react-router-dom';
 import logo from './logo.png';
+import Menu from '../Menu';
 
 class Header extends Component {
 
@@ -16,6 +17,7 @@ class Header extends Component {
 						<div className={styles.banner}>
 							<h1 className={styles.bannerTitle}>React</h1>
 							<p className={styles.bannerDesc}>Complex web apps made easy</p>
+							<Menu />
 						</div>
 					</div>
 				</div>
