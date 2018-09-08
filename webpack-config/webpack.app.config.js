@@ -14,6 +14,30 @@ var AppTemplate = {
 	module: {
 		rules: [
 			{
+				test: /leaflet\.scss$/,
+				include: /src/,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: false,
+							camelCase: true,
+							localIdentName: '[name]__[local]--[hash:base64:5]',
+						}
+					},
+					'postcss-loader',
+					{
+						loader: 'sass-loader',
+						options: {
+							outputStyle: 'expanded'
+						}
+					}
+				]
+			},
+			{
 				test: /\.scss$/,
 				include: /src/,
 				use: [
