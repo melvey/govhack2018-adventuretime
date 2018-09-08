@@ -1,0 +1,27 @@
+@import '../variables.scss';
+
+.search {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  font-size: 1.4em;
+}
+.searchInput {
+  padding: 0 50px 0 80px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+}
+// button svg {
+//   margin: 0 0 5px 0;
+// }

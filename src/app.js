@@ -7,9 +7,9 @@ import App from './components/App';
 import config from './config/general';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faPlus, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const icons = [faHeart, faPlus, faCheck];
+const icons = [faHeart, faPlus, faCheck, faTimes];
 icons.forEach( i => {
   library.add(i);
 });
