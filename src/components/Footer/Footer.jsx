@@ -18,9 +18,14 @@ class Footer extends Component {
 	render() {
 		const className = this.props.className ? `${styles.content} ${this.props.className}` : styles.content;
 		return (
-			<div className={className}>
-				<p>Footer</p>
-			</div>
+				<div className={styles.root}>
+					<div className={styles.container}>
+						<div className={styles.banner}>
+							<h3 className={styles.bannerTitle}>Team Death Clock</h3>
+							<p className={styles.bannerDesc}>Made for GovHack 2018</p>
+						</div>
+					</div>
+				</div>
 		);
 	}
 

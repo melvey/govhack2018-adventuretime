@@ -20,7 +20,10 @@
  * ========================================================================== */
 .Header__root--14IZ- {
   background: #373277;
+<<<<<<< HEAD
   background: #EB5757;
+=======
+>>>>>>> feature/add-leaflet
   color: #fff;
 }
 
@@ -65,6 +68,7 @@
   margin: 0;
 }
 
+<<<<<<< HEAD
 .Header__hamburger--3VBnB {
   position: absolute;
   top: 15px;
@@ -120,6 +124,8 @@
  * Animations
  * ========================================================================== */
 
+=======
+>>>>>>> feature/add-leaflet
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 
 /**
@@ -763,6 +769,30 @@ textarea {
 /*
  * Animations
  * ========================================================================== */
+<<<<<<< HEAD
+=======
+
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+/*
+ * Colors
+ * ========================================================================== */
+/*
+ * Typography
+ * ========================================================================== */
+/*
+ * Layout
+ * ========================================================================== */
+/*
+ * Media queries breakpoints
+ * ========================================================================== */
+/* Extra small screen / phone */
+/* Small screen / tablet */
+/* Medium screen / desktop */
+/* Large screen / wide desktop */
+/*
+ * Animations
+ * ========================================================================== */
+>>>>>>> feature/add-leaflet
 .About__root--2Pc3I {
   color: #555555;
 }

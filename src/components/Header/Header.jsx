@@ -11,18 +11,17 @@ class Header extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
   componentDidMount() {
-    console.log('hello mounty');
   }
   toggleMenu(e) {
-    console.log('Ping');
-    e.classList.toggle("change");
+    console.log(e.target);
+    e.target.classList.toggle("change");
   }
 
   render() {
 		return (
-				<div className={styles.root} onClick={ console.log('outer ping') }>
+				<div className={styles.root}>
 					<div className={styles.container}>
-            <div className={styles.hamburger} onClick={ console.log('inner ping') }>
+            <div className={styles.hamburger} onClick={this.toggleMenu}>
               <div className={styles.bar1}></div>
               <div className={styles.bar2}></div>
               <div className={styles.bar3}></div>
