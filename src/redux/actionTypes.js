@@ -5,5 +5,6 @@
 
 export default {
 	setDummy: 'setDummy',
-	toggleMenu: 'toggleMenu'
+	toggleMenu: 'toggleMenu',
+	setLocation: 'setLocation'
 };

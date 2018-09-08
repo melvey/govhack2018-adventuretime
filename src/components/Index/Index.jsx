@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Index.scss';
-import Map from '../CycleMap';
+import Map from '../../containers/CycleMapContainer';
 
 class Index extends Component {
 

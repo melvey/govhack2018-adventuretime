@@ -7,7 +7,12 @@ import styles from './CycleMap.scss';
 class CycleMap extends Component {
 
 	static propTypes = {
-		className: PropTypes.string
+		className: PropTypes.string,
+		location: PropTypes.shape({
+			latitude: PropTypes.number,
+			longitude: PropTypes.number
+		}),
+		loadLocation: PropTypes.func
 	};
 
 	constructor(props) {
@@ -25,8 +30,7 @@ class CycleMap extends Component {
 		const height = window.innerHeight;
 		const width = window.innerWidth;
 		this.setState({width, height, addMap: true});
-
-
+		this.props.loadLocation();
 	}
 
 	componentDidUpdate() {
@@ -38,12 +42,19 @@ class CycleMap extends Component {
 	}
 
 	loadMap() {
-		var mymap = L.map('cyclemap').setView([51.505, -0.09], 13);
+		var mymap = L.map('cyclemap').setView([-12.42283024081249, 130.8456], 13);
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 				maxZoom: 18,
 				id: 'mapbox.streets'
 		}).addTo(mymap);
+		this.setState({map: mymap});
+	}
+
+	componentWillReceiveProps(props) {
+		if(this.props.location != props.location && this.state.map) {
+			this.state.map.setView([props.location.latitude, props.location.longitude], 13);
+		}
 	}
 
 
