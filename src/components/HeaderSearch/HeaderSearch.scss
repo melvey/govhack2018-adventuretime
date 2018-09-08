@@ -53,3 +53,7 @@ button {
   background-color: white;
   color: $red-base;
 }
+.locOptionsList {
+  display: absolute;
+  top: $header-height;
+}

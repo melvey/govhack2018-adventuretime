@@ -15,7 +15,9 @@ class HeaderSearch extends Component {
 		this.state = {
 			'searchActive': false,
 			'fromValue': '',
+			'fromOptions': [],
 			'toValue': '',
+			'toOptions': [],
 			'difficulty': {
 				'easy': true,
 				'medium': false,
@@ -26,11 +28,17 @@ class HeaderSearch extends Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.toggleSearch = this.toggleSearch.bind(this);
 		this.toggleDifficulty = this.toggleDifficulty.bind(this);
+		this.getLocationOptions = this.getLocationOptions.bind(this);
 	}
 
 	handleInputChange(e) {
 		this.setState({
 			[e.target.name]: e.target.value
+		})
+		console.log(e.target.name.replace('Value', ''));
+		this.getLocationOptions({
+			type: e.target.name.replace('Value', ''),
+			str: e.target.value
 		})
 	}
 	toggleSearch() {
@@ -44,6 +52,32 @@ class HeaderSearch extends Component {
 		this.setState({
 			newDifficulty
 		})
+	}
+	getLocationOptions({type, str}) {
+		function bbox(lat, lng) {
+			//Earth’s radius, sphere
+			const R=6378137;
+			//offsets in meters
+			const offset = 10000;
+			//Coordinate offsets in radians
+			const dLat = offset/R;
+			const dLng = offset/(R*Cos(Math.PI*lat/180));
+			//OffsetPosition, decimal degrees
+			latO = lat + dLat * 180/Math.PI
+			lngO = lng + dLng * 180/Math.PI
+			lat1 = lat - dLat * 180/Math.PI
+			lng1 = lng - dLng * 180/Math.PI
+		}
+		const url = (`https://nominatim.openstreetmap.org/search?q=${encodeURI(str)}&format=json`);
+		let newState = {};
+
+		fetch(url)
+			.then(response => response.json())
+			.then(data => {
+				newState[`${type}Options`] = data;
+				this.setState({...newState});
+			});
+
 	}
 
 	render() {
@@ -114,6 +148,16 @@ class HeaderSearch extends Component {
 									Legendary
 								</button>
 						</div>
+					</div>
+				}
+				{ this.state.fromOptions.length > 0 &&
+					<div className={styles.locOptionsList}>
+						{this.state.fromOptions.map( (option, i) => (
+							<div className={styles.locOption} key={i}>
+								<img src={option.icon} />
+								<span>{option.display_name}</span>
+							</div>
+						))}
 					</div>
 				}
 			</div>
