@@ -8,8 +8,9 @@ $brand-color: #61dafb;
 
 :local(.container) {
   margin: 0 auto;
-  padding: 20px 0;
-  max-width: $max-content-width;
+  padding: 0;
+	width: 100%;
+//  max-width: $max-content-width;
 }
 
 :local(.heading) {

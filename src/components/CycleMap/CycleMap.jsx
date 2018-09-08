@@ -13,19 +13,51 @@ class CycleMap extends Component {
 	constructor(props) {
 		super();
 
+		this.headerHeight = 200;
+		this.footerHeight = 200;
+
+
 		this.props = props;
 		this.state = {};
 	}
 
+	componentDidMount() {
+		const height = window.innerHeight;
+		const width = window.innerWidth;
+		this.setState({width, height, addMap: true});
+
+
+	}
+
+	componentDidUpdate() {
+		console.log('drawn stuff bruta');
+		console.log('state', this.state);
+		if(this.state.addMap) {
+			this.loadMap();
+			this.setState({addMap: false});
+		}
+	}
+
+	loadMap() {
+		console.log('load map');
+		var mymap = L.map('cyclemap').setView([51.505, -0.09], 13);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				maxZoom: 18,
+				id: 'mapbox.streets'
+		}).addTo(mymap);
+	}
+
 
 	render() {
-		return (
-			<iframe width="425"
-					height="350"
-					scrolling="no"
-					src="https://www.openstreetmap.org/export/embed.html?bbox=130.82849895581606%2C-12.469098970752446%2C130.8487120829523%2C-12.455102963278183&amp;layer=cyclemap"
-			></iframe>
-		);
+		const styles = {
+			height: `${this.state.height - this.headerHeight - this.footerHeight}px`,
+			width: `${this.state.width}px`
+		};
+		
+		return this.state.height && this.state.width
+		? ( <div id="cyclemap" style={styles} className={styles.container}> </div>)
+		: null;
 	}
 
 }
