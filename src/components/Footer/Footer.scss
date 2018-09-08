@@ -13,22 +13,21 @@
   margin: 0 auto;
   padding: 20px 0;
   max-width: $max-content-width;
-}
-:local(.banner) {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
 }
 
-:local(.bannerTitle) {
-  margin: 0;
-  padding: 10px;
-  font-weight: normal;
-  font-size: 4em;
-  line-height: 1em;
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
 }
-
-:local(.bannerDesc) {
-  padding: 0;
-  color: rgba(255, 255, 255, .5);
-  font-size: 1.25em;
-  margin: 0;
+button svg {
+  margin: 0 0 5px 0;
 }
