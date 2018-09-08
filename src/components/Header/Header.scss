@@ -2,38 +2,38 @@
 
 $brand-color: #61dafb;
 
-:local(.root) {
+.root {
   background: #373277;
   background: $red-base;
   color: #fff;
 }
 
-:local(.container) {
+.container {
   margin: 0 auto;
   padding: 20px 0;
   max-width: $max-content-width;
 }
 
-:local(.brand) {
+.brand {
   color: lighten($brand-color, 10%);
   text-decoration: none;
   font-size: 1.75em; /* ~28px */
 }
 
-:local(.brandTxt) {
+.brandTxt {
   margin-left: 10px;
 }
 
-:local(.nav) {
+.nav {
   float: right;
   margin-top: 6px;
 }
 
-:local(.banner) {
+.banner {
   text-align: center;
 }
 
-:local(.bannerTitle) {
+.bannerTitle {
   margin: 0;
   padding: 10px;
   font-weight: normal;
@@ -41,7 +41,7 @@ $brand-color: #61dafb;
   line-height: 1em;
 }
 
-:local(.bannerDesc) {
+.bannerDesc {
   padding: 0;
   color: rgba(255, 255, 255, .5);
   font-size: 1.25em;
