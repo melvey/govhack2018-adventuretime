@@ -41,7 +41,6 @@ class HeaderSearch extends Component {
 	toggleDifficulty(e) {
 		let newDifficulty = this.state.difficulty;
 		newDifficulty[e.target.name] = !this.state.difficulty[e.target.name];
-
 		this.setState({
 			newDifficulty
 		})
