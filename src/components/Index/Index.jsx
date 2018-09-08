@@ -8,9 +8,6 @@ class Index extends Component {
 		return (
 				<div className={styles.root}>
 					<div className={styles.container}>
-						<div className={styles.heading}>
-							<h2>Sample Page</h2>
-						</div>
 						<div className={styles.content}>
 							<Map />
 						</div>

@@ -6,7 +6,8 @@ h1 {
 .container > div {
   display: grid;
   grid-template-columns: 1fr 50px;
-  grid-gap: 1em;
+  grid-column-gap: 1em;
+  grid-row-gap: 4px;
   font-size: 1em;
   justify-content: center;
   align-items: center;

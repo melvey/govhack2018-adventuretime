@@ -4,5 +4,6 @@
 **/
 
 export default {
-	setDummy: 'setDummy'
+	setDummy: 'setDummy',
+	toggleMenu: 'toggleMenu'
 };

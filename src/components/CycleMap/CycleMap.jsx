@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+
 import styles from './CycleMap.scss';
+
 
 class CycleMap extends Component {
 
@@ -12,25 +13,51 @@ class CycleMap extends Component {
 	constructor(props) {
 		super();
 
+		this.headerHeight = 200;
+		this.footerHeight = 200;
+
+
 		this.props = props;
 		this.state = {};
 	}
 
+	componentDidMount() {
+		const height = window.innerHeight;
+		const width = window.innerWidth;
+		this.setState({width, height, addMap: true});
+
+
+	}
+
+	componentDidUpdate() {
+		console.log('state', this.state);
+		if(this.state.addMap) {
+			this.loadMap();
+			this.setState({addMap: false});
+		}
+	}
+
+	loadMap() {
+		var mymap = L.map('cyclemap').setView([51.505, -0.09], 13);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				maxZoom: 18,
+				id: 'mapbox.streets'
+		}).addTo(mymap);
+	}
+
+
 	render() {
-		const position = [51.505, -0.09]
-		return (
-			<Map center={position} zoom={13}>
-				<TileLayer
-					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-				/>
-				<Marker position={position}>
-					<Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
-				</Marker>
-			</Map>
-		);
+		const styles = {
+			height: `${this.state.height - this.headerHeight - this.footerHeight}px`,
+			width: `${this.state.width}px`
+		};
+		
+		return this.state.height && this.state.width
+		? ( <div id="cyclemap" style={styles} className={styles.container}> </div>)
+		: null;
 	}
 
 }
 
-export default Map;
+export default CycleMap;
