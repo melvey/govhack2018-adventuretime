@@ -5,7 +5,7 @@ import styles from './Menu.scss';
 class Menu extends Component {
 
 	static propTypes = {
-		className: PropTypes.string
+		active: PropTypes.bool
 	};
 
 	constructor(props) {
@@ -16,8 +16,12 @@ class Menu extends Component {
 	}
 
 	render() {
+		console.log(this.props);
+		const className = this.props.active
+			? `${styles.container} ${styles.active}`
+			: styles.container;
 		return (
-			<div className={styles.container}>
+			<div className={className}>
 				<section className={styles.category}>	
 					<h2>User Profile</h2>
 					<div className={styles.item}>My Searches</div>

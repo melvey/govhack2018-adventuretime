@@ -3,6 +3,8 @@
 $brand-color: #61dafb;
 
 .root {
+	height: $header-height;
+	position: relative;
   background: #373277;
   background: $red-base;
   color: #fff;
@@ -66,18 +68,18 @@ $brand-color: #61dafb;
 }
 
 /* Rotate first bar */
-.change .bar1 {
+.active .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
     transform: rotate(-45deg) translate(-9px, 6px) ;
 }
 
 /* Fade out the second bar */
-.change .bar2 {
+.active .bar2 {
     opacity: 0;
 }
 
 /* Rotate last bar */
-.change .bar3 {
+.active .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
     transform: rotate(45deg) translate(-8px, -8px) ;
 }

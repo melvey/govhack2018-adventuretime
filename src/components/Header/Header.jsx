@@ -30,16 +30,16 @@ class Header extends Component {
 		console.log(this.props);
 
 		return (
-				<div className={styles.root}>
+				<div className={`${styles.root} ${active ? styles.active : ''}`}>
 					<div className={styles.container}>
-            <div className={`${styles.hamburger} ${active ? styles.change : ''}`} onClick={this.toggleMenu}>
+            <div className={styles.hamburger} onClick={this.toggleMenu}>
               <div className={styles.bar1}></div>
               <div className={styles.bar2}></div>
               <div className={styles.bar3}></div>
             </div>
 						<div className={styles.banner}>
 							<h1 className={styles.bannerTitle}>React</h1>
-							{active ? <Menu /> : null}
+							<Menu active={active} />
 						</div>
 					</div>
 				</div>
