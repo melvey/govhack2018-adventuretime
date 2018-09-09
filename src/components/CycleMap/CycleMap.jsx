@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import geojsonFeature from '../../data/sharedpaths.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CycleMap.scss';
 
 
@@ -12,7 +13,10 @@ class CycleMap extends Component {
 			latitude: PropTypes.number,
 			longitude: PropTypes.number
 		}),
-		loadLocation: PropTypes.func
+		//bikeRenting
+		loadLocation: PropTypes.func,
+		loadBikeRenting: PropTypes.func
+
 	};
 
 	constructor(props) {
@@ -32,6 +36,7 @@ class CycleMap extends Component {
 		this.props.loadLocation();
 
 		this.props.loadParking();
+		this.props.loadBikeRenting();
 	}
 
 	componentDidUpdate() {
@@ -52,16 +57,23 @@ class CycleMap extends Component {
 	}
 
 	showParking = (parking) => {
-		if(this.state.markers) {
-			this.state.markers.forEach((marker) => marker.remove());
+		if(this.state.layerData.parking) {
+			this.state.layerData.parking.forEach((marker) => marker.remove());
 		}
 
+        var bikeMarker = L.AwesomeMarkers.icon({
+            // icon: 'bicycle',
+            icon: 'parking',
+            markerColor: 'blue'
+            // className: 'awesome-marker awesome-marker-square'
+        });
+
 		const markers = parking.map((point) => {
-			const marker = L.marker([point.lat, point.lon]);
+			const marker = L.marker([point.lat, point.lon], {icon: bikeMarker});
 			marker.addTo(this.state.map);
 			return marker;
 		});
-		this.setState({parkingMarkers: markers});
+		return markers;
 	}
 
 	showRoute = (route) => {
@@ -99,15 +111,47 @@ class CycleMap extends Component {
 				layerData.shared = L.geoJSON(geojsonFeature);
 				layerData.shared.addTo(this.state.map);
 			}
+			if(layer === 'parking') {
+				console.log('parking', this.props.parking);
+				layerData.parking = this.showParking(this.props.parking);
+			}
+			if(layer === 'rental') {
+				console.log('rental', this.props.rental);
+				layerData.rental = this.showBikeRenting(this.props.bikeRenting);
+			}
 		});
 
 		removeLayers.forEach((layer) => {
 			if(layerData[layer]) {
-				layerData[layer].remove();
+				if(Array.isArray(layerData[layer])) {
+					layerData[layer].forEach((component) => component.remove());
+				} else {
+					layerData[layer].remove();
+				}
 				delete layerData[layer];
 			}
 		});
 		this.setState({layerData});
+	}
+
+	showBikeRenting = (bikeRenting) => {
+			if(this.state.layerData.rental) {
+					this.state.layerData.rental.forEach((marker) => marker.remove());
+			}
+
+			var bikeMarker = L.AwesomeMarkers.icon({
+					// icon: 'bicycle',
+					icon: 'parking',
+					markerColor: 'red'
+					// className: 'awesome-marker awesome-marker-square'
+			});
+			const markers = bikeRenting.map((point) => {
+					const marker = L.marker([point[0], point[1]], {icon: bikeMarker});
+					marker.addTo(this.state.map);
+					return marker;
+			});
+
+			return markers;
 	}
 
 	componentWillReceiveProps(props) {
@@ -117,7 +161,7 @@ class CycleMap extends Component {
 
 		if(this.props.route != props.route && this.state.map) {
 			this.showRoute(props.route);
-			this.showParking(props.parking);
+			//this.showParking(props.parking);
 		}
 
 

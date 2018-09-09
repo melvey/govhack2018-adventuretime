@@ -13,5 +13,7 @@ export default {
 	showParking: 'showParking',
 	setRoute: 'setRoute',
 	addLayer: 'addLayer',
-	removeLayer: 'removeLayer'
+	removeLayer: 'removeLayer',
+	setBikeRenting: 'setBikeRenting',
+	showBikeRenting: 'showBikeRenting'
 };
