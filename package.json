@@ -49,6 +49,7 @@
     "express": "^4.13.4",
     "history": "^4.6.3",
     "immutable": "^3.8.1",
+    "leaflet.awesome-markers": "^2.0.4",
     "prop-types": "^15.6.2",
     "pug": "^2.0.0-rc.2",
     "react": "^16.4.2",

@@ -70,8 +70,13 @@ class CycleMap extends Component {
             this.state.markers.forEach((marker) => marker.remove());
         }
 
+        var bikeMarker = L.AwesomeMarkers.icon({
+            icon: 'bicycle',
+            markerColor: 'green'
+        });
+
         const markers = bikeRenting.map((point) => {
-            const marker = L.marker([point[0], point[1]]);
+            const marker = L.marker([point[0], point[1]], {icon: bikeMarker});
             marker.addTo(this.state.map);
             return marker;
         });
