@@ -4,7 +4,7 @@ import styles from './Header.scss';
 import {Link} from 'react-router-dom';
 import logo from './logo.png';
 import HeaderSearch from '../HeaderSearch';
-import Menu from '../Menu';
+import Menu from '../../containers/MenuContainer';
 
 class Header extends Component {
 	static propTypes = {

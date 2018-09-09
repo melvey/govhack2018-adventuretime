@@ -11,5 +11,7 @@ export default {
 	setFromLocation: 'setFromLocation',
 	setParking: 'setParking',
 	showParking: 'showParking',
-	setRoute: 'setRoute'
+	setRoute: 'setRoute',
+	addLayer: 'addLayer',
+	removeLayer: 'removeLayer'
 };
