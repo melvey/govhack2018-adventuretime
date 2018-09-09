@@ -10,7 +10,12 @@ class Footer extends Component {
 		startRide: PropTypes.func,
 		stopRide: PropTypes.func,
 		closeDialog: PropTypes.func,
-		startTime: PropTypes.number
+		startTime: PropTypes.number,
+		route: PropTypes.shape({
+			routes: PropTypes.arrayOf(PropTypes.shape({
+				distance: PropTypes.number
+			}))
+		})
 	};
 
 	constructor(props) {
@@ -21,17 +26,22 @@ class Footer extends Component {
 	}
 
 	render() {
+		console.log('route', !!this.props.route);
 
 		const className = this.props.className ? `${styles.content} ${this.props.className}` : styles.content;
 
 		let statusBtn = undefined;
+		let middleBtn = (<button><FontAwesomeIcon icon="plus" />Add</button>);
+
 		if(this.props.showComplete) {
 			statusBtn = (<button onClick={this.props.closeDialog}><FontAwesomeIcon icon="times" />Close</button>);
+			middleBtn = (<button><FontAwesomeIcon icon="share-alt" />Share</button>);
 		} else if(this.props.startTime) { 
 			statusBtn = (<button onClick={this.props.stopRide}><FontAwesomeIcon icon="flag-checkered" />Stop</button>);
 		} else {
-			statusBtn = (<button onClick={this.props.startRide}><FontAwesomeIcon icon="check" />Start</button>);
+			statusBtn = (<button disabled={!this.props.route} onClick={this.props.startRide}><FontAwesomeIcon icon="check" />Start</button>);
 		}
+
 
 		return (
 				<div className={styles.root}>
@@ -40,10 +50,7 @@ class Footer extends Component {
 							<FontAwesomeIcon icon="heart" />
 							Save
 						</button>
-						<button>
-							<FontAwesomeIcon icon="plus" />
-							Add
-						</button>
+						{middleBtn}
 						{statusBtn}
 					</div>
 				</div>
