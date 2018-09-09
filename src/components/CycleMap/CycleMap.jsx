@@ -18,8 +18,8 @@ class CycleMap extends Component {
 	constructor(props) {
 		super();
 
-		this.headerHeight = 200;
-		this.footerHeight = 200;
+		this.headerHeight = 100;
+		this.footerHeight = 80;
 
 
 		this.props = props;
