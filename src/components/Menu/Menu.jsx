@@ -4,7 +4,8 @@ import styles from './Menu.scss';
 
 const layerList = {
 	shared: 'shared',
-	parking: 'parking'
+	parking: 'parking',
+	rental: 'rental'
 };
 
 class Menu extends Component {
@@ -47,7 +48,7 @@ class Menu extends Component {
 					<h2>Layers</h2>
 					<div className={`${styles.item} ${layers.indexOf(layerList.shared) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.shared)}>Shared Paths</div>
 					<div className={`${styles.item} ${layers.indexOf(layerList.parking) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.parking)}>Bike Parking</div>
-					<div className={styles.item}>Bike Rental</div>
+					<div className={`${styles.item} ${layers.indexOf(layerList.rental) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.rental)}>Bike Rental</div>
 				</section>
 				<section>
 					<h2>Filters</h2>

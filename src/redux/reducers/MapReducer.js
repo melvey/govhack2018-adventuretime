@@ -116,6 +116,28 @@ function handleRemoveLayer(state, data) {
 	);
 }
 
+function handleSetBikeRenting(state, data) {
+    return Object.assign(
+        {},
+        state,
+        {
+            bikeRenting: data
+        }
+    );
+}
+
+/*
+function handleShowBikeRenting(data) {
+    return Object.assign(
+        {},
+        state,
+        {
+            showBikeRenting: data
+        }
+    );
+}
+*/
+
 export default function setmapReducer(state, action) {
 	switch(action.type) {
 		case actionTypes.setLocation:
@@ -136,6 +158,12 @@ export default function setmapReducer(state, action) {
 			return handleAddLayer(state, action.payload);
 		case actionTypes.removeLayer:
 			return handleRemoveLayer(state, action.payload);
+			case actionTypes.setBikeRenting:
+					return handleSetBikeRenting(state, action.payload);
+/*
+			case actionTypes.showBikeRenting:
+					return handleShowBikeRenting(state, action.payload);
+*/
 		default:
 			return state || {layers: []};
 	}

@@ -12,7 +12,10 @@ class CycleMap extends Component {
 			latitude: PropTypes.number,
 			longitude: PropTypes.number
 		}),
-		loadLocation: PropTypes.func
+		//bikeRenting
+		loadLocation: PropTypes.func,
+		loadBikeRenting: PropTypes.func
+
 	};
 
 	constructor(props) {
@@ -32,6 +35,7 @@ class CycleMap extends Component {
 		this.props.loadLocation();
 
 		this.props.loadParking();
+		this.props.loadBikeRenting();
 	}
 
 	componentDidUpdate() {
@@ -103,6 +107,10 @@ class CycleMap extends Component {
 				console.log('parking', this.props.parking);
 				layerData.parking = this.showParking(this.props.parking);
 			}
+			if(layer === 'rental') {
+				console.log('rental', this.props.rental);
+				layerData.rental = this.showBikeRenting(this.props.bikeRenting);
+			}
 		});
 
 		removeLayers.forEach((layer) => {
@@ -116,6 +124,20 @@ class CycleMap extends Component {
 			}
 		});
 		this.setState({layerData});
+	}
+
+	showBikeRenting = (bikeRenting) => {
+			if(this.state.layerData.rental) {
+					this.state.layerData.rental.forEach((marker) => marker.remove());
+			}
+
+			const markers = bikeRenting.map((point) => {
+					const marker = L.marker([point[0], point[1]]);
+					marker.addTo(this.state.map);
+					return marker;
+			});
+
+			return markers;
 	}
 
 	componentWillReceiveProps(props) {

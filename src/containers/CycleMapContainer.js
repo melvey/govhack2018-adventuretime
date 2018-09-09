@@ -6,6 +6,7 @@ import loadParking from '../loaders/loadParking';
 import loadRoute from '../loaders/loadRoute';
 import removeLayerAction from '../redux/actions/RemoveLayerAction';
 import addLayerAction from '../redux/actions/AddLayerAction';
+import loadBikeRenting from '../loaders/loadBikeRenting';
 
 function addLayer(layer) {
 	store.dispatch(addLayerAction(layer));
@@ -30,10 +31,10 @@ const mapStateToProps = (state) => {
 	return ({
 		loadLocation,
 		loadParking,
+		loadBikeRenting,
 		...state.map
 	});
 };
-
 
 const ReduxContainer = connect(mapStateToProps)(CycleMap);
 
