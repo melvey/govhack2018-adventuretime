@@ -128,8 +128,8 @@ class HeaderSearch extends Component {
 				{ !this.state.searchActive
 				?
 					<div className={styles.title}>
-						<h1>AdventureTime</h1>
-						<button onClick={this.toggleSearch} >
+						<h1>Everyday Active</h1>
+						<button className={styles.searchBtn} onClick={this.toggleSearch} >
 							<FontAwesomeIcon
 								icon="search"
 							/>
