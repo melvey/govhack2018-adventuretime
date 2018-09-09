@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
+import geojsonFeature from '../../data/sharedpaths.json';
 import styles from './CycleMap.scss';
 
 
@@ -18,8 +18,8 @@ class CycleMap extends Component {
 	constructor(props) {
 		super();
 
-		this.headerHeight = 200;
-		this.footerHeight = 200;
+		this.headerHeight = 100;
+		this.footerHeight = 100;
 
 
 		this.props = props;
@@ -48,6 +48,9 @@ class CycleMap extends Component {
 				maxZoom: 18,
 				id: 'mapbox.streets'
 		}).addTo(mymap);
+		if (this.state.showSharedPaths) {
+			L.geoJSON(geojsonFeature).addTo(mymap);
+		}
 		this.setState({map: mymap});
 	}
 
