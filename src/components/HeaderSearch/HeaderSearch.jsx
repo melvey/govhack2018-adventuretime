@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './HeaderSearch.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import store from '../../redux/store';
+import setFromLocationAction from '../../redux/actions/SetFromLocationAction';
+import setToLocationAction from '../../redux/actions/SetToLocationAction';
 
 class HeaderSearch extends Component {
 
@@ -15,8 +18,16 @@ class HeaderSearch extends Component {
 		this.state = {
 			'searchActive': false,
 			'fromValue': '',
+			'fromCoord': {
+				'lat': '',
+				'lng': ''
+			},
 			'fromOptions': [],
 			'toValue': '',
+			'toCoord': {
+				'lat': '',
+				'lng': ''
+			},
 			'toOptions': [],
 			'difficulty': {
 				'easy': true,
@@ -29,13 +40,13 @@ class HeaderSearch extends Component {
 		this.toggleSearch = this.toggleSearch.bind(this);
 		this.toggleDifficulty = this.toggleDifficulty.bind(this);
 		this.getLocationOptions = this.getLocationOptions.bind(this);
+		this.selectLocation = this.selectLocation.bind(this);
 	}
 
 	handleInputChange(e) {
 		this.setState({
 			[e.target.name]: e.target.value
 		})
-		console.log(e.target.name.replace('Value', ''));
 		this.getLocationOptions({
 			type: e.target.name.replace('Value', ''),
 			str: e.target.value
@@ -70,18 +81,43 @@ class HeaderSearch extends Component {
 		}
 		const url = (`https://nominatim.openstreetmap.org/search?q=${encodeURI(str)}&format=json`);
 		let newState = {};
+		const otherType = type === 'to' ? 'fromOptions' : 'toOptions';
 
 		fetch(url)
 			.then(response => response.json())
 			.then(data => {
 				newState[`${type}Options`] = data;
+				newState[otherType] = [];
 				this.setState({...newState});
 			});
-
+	}
+	selectLocation(e) {
+		const valueKey = e.currentTarget.classList[1].replace('Options', 'Value');
+		let newState = {};
+		newState[valueKey] = e.currentTarget.innerText;
+		newState[e.currentTarget.classList[1]] = [];
+		this.setState({...newState});
+		const coords = {
+			'latitude': e.currentTarget.attributes.lat,
+			'longitude': e.currentTarget.attributes.lng
+		}
+		if (valueKey === 'fromValue') {
+			store.dispatch(setFromLocationAction(coords))
+		} else if (valueKey === 'toValue') {
+			store.dispatch(setToLocationAction(coords))
+		}
 	}
 
 	render() {
 		const className = this.props.className ? `${styles.content} ${this.props.className}` : styles.content;
+		let optionsListType;
+		if (this.state.fromOptions.length > this.state.toOptions.length) {
+			optionsListType = 'fromOptions';
+		} else if (this.state.fromOptions.length < this.state.toOptions.length) {
+			optionsListType = 'toOptions';
+		} else {
+			optionsListType = '';
+		}
 		return (
 			<div className={styles.container}>
 				{ !this.state.searchActive
@@ -150,10 +186,16 @@ class HeaderSearch extends Component {
 						</div>
 					</div>
 				}
-				{ this.state.fromOptions.length > 0 &&
+				{ optionsListType !== '' &&
 					<div className={styles.locOptionsList}>
-						{this.state.fromOptions.map( (option, i) => (
-							<div className={styles.locOption} key={i}>
+						{this.state[optionsListType].map( (option, i) => (
+							<div
+								className={`${styles.locOption} ${optionsListType}`}
+								key={i}
+								onClick={this.selectLocation}
+								lat={option.lat}
+								lng={option.lon}
+								>
 								<img src={option.icon} />
 								<span>{option.display_name}</span>
 							</div>

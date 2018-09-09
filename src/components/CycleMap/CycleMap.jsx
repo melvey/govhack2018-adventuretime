@@ -63,7 +63,7 @@ class CycleMap extends Component {
 			height: `${this.state.height - this.headerHeight - this.footerHeight}px`,
 			width: `${this.state.width}px`
 		};
-		
+
 		return this.state.height && this.state.width
 		? ( <div id="cyclemap" style={styles} className={styles.container}> </div>)
 		: null;

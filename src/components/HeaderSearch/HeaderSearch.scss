@@ -54,6 +54,20 @@ button {
   color: $red-base;
 }
 .locOptionsList {
-  display: absolute;
+  position:absolute;
   top: $header-height;
+  left: 0;
+  width: 100%;
+  z-index: 600;
+  background-color: white;
+  color: $red-base;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.locOptionsList > div {
+  grid-column: 1 / -1;
+  display:grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-around;
+  cursor: pointer;
 }
