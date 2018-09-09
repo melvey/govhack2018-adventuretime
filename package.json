@@ -8,7 +8,8 @@
     "build": "webpack --progress --colors --mode=development",
     "build:prod": "webpack --progress --colors --mode=production",
     "serve": "nodemon build/server.js",
-    "start": "webpack --progress --colors --mode=development --watch & nodemon build/server.js"
+    "start": "webpack --progress --colors --mode=development --watch & nodemon build/server.js",
+		"deploy": "git subtree push --prefix build origin gh-pages"
   },
   "author": "",
   "license": "ISC",
