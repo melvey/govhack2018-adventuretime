@@ -73,7 +73,7 @@ function handleSetRoute(state, data) {
 			routeData = fudgedRoute;
 			console.log('Too many requests, fudging data');
 	}
-			
+
 	return Object.assign(
 		{},
 		state,
@@ -138,6 +138,15 @@ function handleShowBikeRenting(data) {
 }
 */
 
+function handleSetPOIAction(state, data) {
+  return Object.assign(
+      {},
+      state,
+      {
+          poi: data
+      }
+  );
+}
 
 export default function setmapReducer(state, action) {
 	switch(action.type) {
@@ -165,6 +174,8 @@ export default function setmapReducer(state, action) {
 			case actionTypes.showBikeRenting:
 					return handleShowBikeRenting(state, action.payload);
 */
+		case actionTypes.setPOIAction:
+			return handleSetPOIAction(state, action.payload);
 		default:
 			return state || {layers: []};
 	}

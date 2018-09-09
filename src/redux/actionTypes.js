@@ -18,5 +18,6 @@ export default {
 	showBikeRenting: 'showBikeRenting',
 	startRide: 'startRide',
 	showComplete: 'showComplete',
-	stopRide: 'stopRide'
+	stopRide: 'stopRide',
+	setPOIAction: 'setPOIAction'
 };
