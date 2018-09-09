@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './CycleMap.scss';
 
@@ -57,8 +58,15 @@ class CycleMap extends Component {
 			this.state.markers.forEach((marker) => marker.remove());
 		}
 
+        var bikeMarker = L.AwesomeMarkers.icon({
+            // icon: 'bicycle',
+            icon: 'parking',
+            markerColor: 'blue'
+            // className: 'awesome-marker awesome-marker-square'
+        });
+
 		const markers = parking.map((point) => {
-			const marker = L.marker([point.lat, point.lon]);
+			const marker = L.marker([point.lat, point.lon], {icon: bikeMarker});
 			marker.addTo(this.state.map);
 			return marker;
 		});
