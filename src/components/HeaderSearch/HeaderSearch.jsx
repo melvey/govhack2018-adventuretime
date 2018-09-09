@@ -72,14 +72,19 @@ class HeaderSearch extends Component {
 			const offset = 10000;
 			//Coordinate offsets in radians
 			const dLat = offset/R;
-			const dLng = offset/(R*Cos(Math.PI*lat/180));
+			const dLng = offset/(R*Math.cos(Math.PI*lat/180));
 			//OffsetPosition, decimal degrees
-			latO = lat + dLat * 180/Math.PI
-			lngO = lng + dLng * 180/Math.PI
-			lat1 = lat - dLat * 180/Math.PI
-			lng1 = lng - dLng * 180/Math.PI
+			return `${lat + dLat * 180/Math.PI}, ${lng + dLng * 180/Math.PI}, ${lat - dLat * 180/Math.PI}, ${lng - dLng * 180/Math.PI}`;
+			// const latO = lat + dLat * 180/Math.PI
+			// const lngO = lng + dLng * 180/Math.PI
+			// const lat1 = lat - dLat * 180/Math.PI
+			// const lng1 = lng - dLng * 180/Math.PI
+			// return `${lat0}, ${lng0}, ${lat1}, ${lng1}`
 		}
-		const url = (`https://nominatim.openstreetmap.org/search?q=${encodeURI(str)}&format=json`);
+		// BBOX IS BROKEN
+		const viewBox = bbox(-12.467332, 130.845904);
+		const limit = 5;
+		const url = (`https://nominatim.openstreetmap.org/search?q=${encodeURI(str)}+Darwin+Australia&format=json&limit=${limit}`);
 		let newState = {};
 		const otherType = type === 'to' ? 'fromOptions' : 'toOptions';
 
