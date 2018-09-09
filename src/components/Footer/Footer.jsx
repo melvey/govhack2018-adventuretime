@@ -10,7 +10,12 @@ class Footer extends Component {
 		startRide: PropTypes.func,
 		stopRide: PropTypes.func,
 		closeDialog: PropTypes.func,
-		startTime: PropTypes.number
+		startTime: PropTypes.number,
+		route: PropTypes.shape({
+			routes: PropTypes.arrayOf(PropTypes.shape({
+				distance: PropTypes.number
+			}))
+		})
 	};
 
 	constructor(props) {
@@ -21,6 +26,7 @@ class Footer extends Component {
 	}
 
 	render() {
+		console.log('route', !!this.props.route);
 
 		const className = this.props.className ? `${styles.content} ${this.props.className}` : styles.content;
 
@@ -33,7 +39,7 @@ class Footer extends Component {
 		} else if(this.props.startTime) { 
 			statusBtn = (<button onClick={this.props.stopRide}><FontAwesomeIcon icon="flag-checkered" />Stop</button>);
 		} else {
-			statusBtn = (<button onClick={this.props.startRide}><FontAwesomeIcon icon="check" />Start</button>);
+			statusBtn = (<button disabled={!this.props.route} onClick={this.props.startRide}><FontAwesomeIcon icon="check" />Start</button>);
 		}
 
 

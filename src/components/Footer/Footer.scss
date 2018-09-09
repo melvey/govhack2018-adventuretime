@@ -19,6 +19,10 @@
 
 }
 
+.container button:disabled {
+	color: $red-base;
+}
+
 button {
   background: none;
   border: none;

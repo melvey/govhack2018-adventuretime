@@ -23,7 +23,8 @@ const mapStateToProps = (state) => ({
 	closeDialog,
 	startRide,
 	stopRide,
-	...state.ride
+	...state.ride,
+	route: state.map.route
 });
 
 
