@@ -1,7 +1,14 @@
 @import '../variables.scss';
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: $header-height;
+}
 h1 {
-  font-size: 1em;
+  font-size: 1.6em !important;
+  margin: 0 !important;
 }
 .container > div {
   display: grid;
@@ -11,11 +18,12 @@ h1 {
   font-size: 1em;
   justify-content: center;
   align-items: center;
+  margin-left: 60px;
 }
 .container .search {
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 50px;
-  margin-left: 80px;
+  // margin-left: 80px;
 }
 .search input {
   background: transparent;
