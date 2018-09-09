@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import geojsonFeature from '../../data/sharedpaths.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CycleMap.scss';
 
 
@@ -60,8 +61,15 @@ class CycleMap extends Component {
 			this.state.layerData.parking.forEach((marker) => marker.remove());
 		}
 
+        var bikeMarker = L.AwesomeMarkers.icon({
+            // icon: 'bicycle',
+            icon: 'parking',
+            markerColor: 'blue'
+            // className: 'awesome-marker awesome-marker-square'
+        });
+
 		const markers = parking.map((point) => {
-			const marker = L.marker([point.lat, point.lon]);
+			const marker = L.marker([point.lat, point.lon], {icon: bikeMarker});
 			marker.addTo(this.state.map);
 			return marker;
 		});
@@ -131,8 +139,14 @@ class CycleMap extends Component {
 					this.state.layerData.rental.forEach((marker) => marker.remove());
 			}
 
+			var bikeMarker = L.AwesomeMarkers.icon({
+					// icon: 'bicycle',
+					icon: 'parking',
+					markerColor: 'red'
+					// className: 'awesome-marker awesome-marker-square'
+			});
 			const markers = bikeRenting.map((point) => {
-					const marker = L.marker([point[0], point[1]]);
+					const marker = L.marker([point[0], point[1]], {icon: bikeMarker});
 					marker.addTo(this.state.map);
 					return marker;
 			});
