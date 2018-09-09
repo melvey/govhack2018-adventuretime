@@ -103,8 +103,8 @@ class HeaderSearch extends Component {
 		newState[e.currentTarget.classList[1]] = [];
 		this.setState({...newState});
 		const coords = {
-			'latitude': e.currentTarget.attributes.lat,
-			'longitude': e.currentTarget.attributes.lng
+			'latitude': e.currentTarget.attributes.lat.value,
+			'longitude': e.currentTarget.attributes.lng.value
 		}
 		if (valueKey === 'fromValue') {
 			store.dispatch(setFromLocationAction(coords))
