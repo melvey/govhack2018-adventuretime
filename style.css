@@ -28,7 +28,6 @@
 
 .Header__container--izfMl {
   margin: 0 auto;
-  padding-top: 8px;
   max-width: 1000px;
 }
 
@@ -121,8 +120,16 @@
 /*
  * Animations
  * ========================================================================== */
+.HeaderSearch__container--3opaD {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+}
+
 h1 {
-  font-size: 1em;
+  font-size: 1.6em !important;
+  margin: 0 !important;
 }
 
 .HeaderSearch__container--3opaD > div {
@@ -133,12 +140,12 @@ h1 {
   font-size: 1em;
   justify-content: center;
   align-items: center;
+  margin-left: 60px;
 }
 
 .HeaderSearch__container--3opaD .HeaderSearch__search--2wGfk {
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 50px;
-  margin-left: 80px;
 }
 
 .HeaderSearch__search--2wGfk input {
