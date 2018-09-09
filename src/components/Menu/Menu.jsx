@@ -2,10 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Menu.scss';
 
+const layerList = {
+	shared: 'shared'
+};
+
 class Menu extends Component {
 
 	static propTypes = {
-		active: PropTypes.bool
+		active: PropTypes.bool,
+		layers: PropTypes.arrayOf(PropTypes.string),
+		addLayer: PropTypes.func,
+		removeLayer: PropTypes.func
 	};
 
 	constructor(props) {
@@ -15,18 +22,31 @@ class Menu extends Component {
 		this.state = {};
 	}
 
+	toggleLayer = (layer) => {
+		console.log('toggle layer', layer);
+		const layers = this.props.layers || [];
+		if(layers.indexOf(layer) >= 0) {
+			this.props.removeLayer(layer);
+		} else {
+			this.props.addLayer(layer);
+		}
+	}
+
 	render() {
 		console.log(this.props);
 		const className = this.props.active
 			? `${styles.container} ${styles.active}`
 			: styles.container;
+
+		const layers = this.props.layers || [];
+
 		return (
 			<div className={className}>
 				<section className={styles.category}>	
-					<h2>User Profile</h2>
-					<div className={styles.item}>My Searches</div>
-					<div className={styles.item}>My Places</div>
-					<div className={styles.item}>My Adventures</div>
+					<h2>Layers</h2>
+					<div className={`${styles.item} ${layers.indexOf(layerList.shared) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.shared)}>Shared Paths</div>
+					<div className={styles.item}>Bike Parking</div>
+					<div className={styles.item}>Bike Rental</div>
 				</section>
 				<section>
 					<h2>Filters</h2>

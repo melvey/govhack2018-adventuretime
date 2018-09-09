@@ -23,7 +23,7 @@ class CycleMap extends Component {
 
 
 		this.props = props;
-		this.state = {};
+		this.state = {layerData: {}};
 	}
 
 	componentDidMount() {
@@ -49,9 +49,6 @@ class CycleMap extends Component {
 				maxZoom: 18,
 				id: 'mapbox.streets'
 		}).addTo(mymap);
-		if (this.state.showSharedPaths) {
-			L.geoJSON(geojsonFeature).addTo(mymap);
-		}
 		this.setState({map: mymap});
 	}
 
@@ -95,6 +92,25 @@ class CycleMap extends Component {
 	this.setState({directionLine: polyline});
 	}
 
+	toggleLayers = (showLayers, removeLayers) => {
+		const layerData = Object.assign({}, this.state.layerData);
+
+		showLayers.forEach((layer) => {
+			if(layer === 'shared') {
+				layerData.shared = L.geoJSON(geojsonFeature);
+				layerData.shared.addTo(this.state.map);
+			}
+		});
+
+		removeLayers.forEach((layer) => {
+			if(layerData[layer]) {
+				layerData[layer].remove();
+				delete layerData[layer];
+			}
+		});
+		this.setState({layerData});
+	}
+
 	componentWillReceiveProps(props) {
 		if(this.props.location != props.location && this.state.map) {
 			this.state.map.setView([props.location.latitude, props.location.longitude], 13);
@@ -103,6 +119,14 @@ class CycleMap extends Component {
 		if(this.props.route != props.route && this.state.map) {
 			this.showRoute(props.route);
 			this.showParking(props.parking);
+		}
+
+
+		if(this.props.layers != props.layers) {
+			const newLayers = props.layers.filter((layer) => this.props.layers.indexOf(layer) === -1);
+			const oldLayers = this.props.layers.filter((layer) => props.layers.indexOf(layer) === -1);
+
+			this.toggleLayers(newLayers, oldLayers);
 		}
 	}
 

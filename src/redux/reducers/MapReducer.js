@@ -55,6 +55,7 @@ function handleSetFromLocation(state, data) {
 	);
 }
 
+/*
 function handleShowParking(state, data) {
 	return Object.assign(
 		{},
@@ -64,6 +65,7 @@ function handleShowParking(state, data) {
 		}
 	);
 }
+*/
 
 function handleSetRoute(state, data) {
 	let routeData = data;
@@ -81,6 +83,39 @@ function handleSetRoute(state, data) {
 	);
 }
 
+function handleAddLayer(state, data) {
+	let layers = state.layers ? state.layers.slice(0) : [];
+	if(layers.indexOf(data) >= 0) {
+		return state;
+	}
+
+	layers.push(data);
+	return Object.assign(
+		{},
+		state,
+		{
+			layers
+		}
+	);
+}
+
+function handleRemoveLayer(state, data) {
+	let layers = state.layers ? state.layers.slice(0) : [];
+	const index = layers.indexOf(data);
+	if(index === -1) {
+		return state;
+	}
+
+	layers.splice(index, 1);
+	return Object.assign(
+		{},
+		state,
+		{
+			layers
+		}
+	);
+}
+
 export default function setmapReducer(state, action) {
 	switch(action.type) {
 		case actionTypes.setLocation:
@@ -91,11 +126,17 @@ export default function setmapReducer(state, action) {
 			return handleSetFromLocation(state, action.payload);
 		case actionTypes.setParking:
 			return handleSetParking(state, action.payload);
+/*
 		case actionTypes.showParking:
 			return handleShowParking(state, action.payload);
+*/
 		case actionTypes.setRoute:
 			return handleSetRoute(state, action.payload);
+		case actionTypes.addLayer:
+			return handleAddLayer(state, action.payload);
+		case actionTypes.removeLayer:
+			return handleRemoveLayer(state, action.payload);
 		default:
-			return state || {};
+			return state || {layers: []};
 	}
 }

@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import CycleMap from '../components/CycleMap';
-import SharedPaths from '../components/SharedPaths';
 import store from '../redux/store';
 import setLocationAction from '../redux/actions/SetLocationAction';
 import loadParking from '../loaders/loadParking';
