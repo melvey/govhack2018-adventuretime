@@ -12,8 +12,7 @@ class CycleMap extends Component {
 			latitude: PropTypes.number,
 			longitude: PropTypes.number
 		}),
-		loadLocation: PropTypes.func,
-		loadRoute: PropTypes.func
+		loadLocation: PropTypes.func
 	};
 
 	constructor(props) {
@@ -34,18 +33,6 @@ class CycleMap extends Component {
 		this.props.loadLocation();
 
 		this.props.loadParking();
-		const coords = [
-			{
-				lat: 130.8462611,
-				lng: -12.4665183
-			},
-			{
-				lat: 130.842553,
-				lng: -12.4639231
-			}
-		];
-		this.props.loadRoute(coords);
-
 	}
 
 	componentDidUpdate() {
@@ -110,11 +97,9 @@ class CycleMap extends Component {
 			this.state.map.setView([props.location.latitude, props.location.longitude], 13);
 		}
 
-		if(this.props.parking != props.parking && this.state.map) {
-			this.showParking(props.parking);
-		}
 		if(this.props.route != props.route && this.state.map) {
 			this.showRoute(props.route);
+			this.showParking(props.parking);
 		}
 	}
 
@@ -124,7 +109,7 @@ class CycleMap extends Component {
 			height: `${this.state.height - this.headerHeight - this.footerHeight}px`,
 			width: `${this.state.width}px`
 		};
-
+		
 		return this.state.height && this.state.width
 		? ( <div id="cyclemap" style={styles} className={styles.container}> </div>)
 		: null;

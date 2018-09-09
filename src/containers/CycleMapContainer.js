@@ -10,12 +10,17 @@ function loadLocation() {
 }
 
 
-const mapStateToProps = (state) => ({
-	loadLocation,
-	loadParking,
-	loadRoute,
-	...state.map
-});
+const mapStateToProps = (state) => {
+	if(state.map.toLocation && state.map.fromLocation) {
+		loadRoute([state.map.fromLocation, state.map.toLocation]);
+	}
+
+	return ({
+		loadLocation,
+		loadParking,
+		...state.map
+	});
+};
 
 
 const ReduxContainer = connect(mapStateToProps)(CycleMap);

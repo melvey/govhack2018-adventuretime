@@ -8,7 +8,7 @@ export default {
 	toggleMenu: 'toggleMenu',
 	setLocation: 'setLocation',
 	setToLocation: 'setToLocation',
-	setFromLocation: 'setFromLocation'
+	setFromLocation: 'setFromLocation',
 	setParking: 'setParking',
 	showParking: 'showParking',
 	setRoute: 'setRoute'
