@@ -9,4 +9,7 @@ export default {
 	setLocation: 'setLocation',
 	setToLocation: 'setToLocation',
 	setFromLocation: 'setFromLocation'
+	setParking: 'setParking',
+	showParking: 'showParking',
+	setRoute: 'setRoute'
 };
