@@ -52,8 +52,8 @@ class CycleMap extends Component {
 	}
 
 	showParking = (parking) => {
-		if(this.state.markers) {
-			this.state.markers.forEach((marker) => marker.remove());
+		if(this.state.layerData.parking) {
+			this.state.layerData.parking.forEach((marker) => marker.remove());
 		}
 
 		const markers = parking.map((point) => {
@@ -61,7 +61,7 @@ class CycleMap extends Component {
 			marker.addTo(this.state.map);
 			return marker;
 		});
-		this.setState({parkingMarkers: markers});
+		return markers;
 	}
 
 	showRoute = (route) => {
@@ -99,11 +99,19 @@ class CycleMap extends Component {
 				layerData.shared = L.geoJSON(geojsonFeature);
 				layerData.shared.addTo(this.state.map);
 			}
+			if(layer === 'parking') {
+				console.log('parking', this.props.parking);
+				layerData.parking = this.showParking(this.props.parking);
+			}
 		});
 
 		removeLayers.forEach((layer) => {
 			if(layerData[layer]) {
-				layerData[layer].remove();
+				if(Array.isArray(layerData[layer])) {
+					layerData[layer].forEach((component) => component.remove());
+				} else {
+					layerData[layer].remove();
+				}
 				delete layerData[layer];
 			}
 		});
@@ -117,7 +125,7 @@ class CycleMap extends Component {
 
 		if(this.props.route != props.route && this.state.map) {
 			this.showRoute(props.route);
-			this.showParking(props.parking);
+			//this.showParking(props.parking);
 		}
 
 
