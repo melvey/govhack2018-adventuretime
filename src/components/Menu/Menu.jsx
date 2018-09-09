@@ -5,7 +5,8 @@ import styles from './Menu.scss';
 const layerList = {
 	shared: 'shared',
 	parking: 'parking',
-	rental: 'rental'
+	rental: 'rental',
+	poi: 'poi'
 };
 
 class Menu extends Component {
@@ -44,11 +45,12 @@ class Menu extends Component {
 
 		return (
 			<div className={className}>
-				<section className={styles.category}>	
+				<section className={styles.category}>
 					<h2>Layers</h2>
 					<div className={`${styles.item} ${layers.indexOf(layerList.shared) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.shared)}>Shared Paths</div>
 					<div className={`${styles.item} ${layers.indexOf(layerList.parking) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.parking)}>Bike Parking</div>
 					<div className={`${styles.item} ${layers.indexOf(layerList.rental) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.rental)}>Bike Rental</div>
+					<div className={`${styles.item} ${layers.indexOf(layerList.poi) >=0 ? styles.itemActive : null}`} onClick={() => this.toggleLayer(layerList.poi)}>Points of interest</div>
 				</section>
 				<section>
 					<h2>Filters</h2>
@@ -56,7 +58,6 @@ class Menu extends Component {
 					<div className={styles.item}>Suggestions</div>
 					<div className={styles.item}>Tags</div>
 					<div className={styles.item}>Difficulty</div>
-					<div className={styles.item}>Points of interest</div>
 					<div className={styles.item}>Other Filters</div>
 				</section>
 			</div>

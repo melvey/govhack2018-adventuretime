@@ -15,5 +15,6 @@ export default {
 	addLayer: 'addLayer',
 	removeLayer: 'removeLayer',
 	setBikeRenting: 'setBikeRenting',
-	showBikeRenting: 'showBikeRenting'
+	showBikeRenting: 'showBikeRenting',
+	setPOIAction: 'setPOIAction'
 };

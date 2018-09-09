@@ -4,6 +4,7 @@ import store from '../redux/store';
 import setLocationAction from '../redux/actions/SetLocationAction';
 import loadParking from '../loaders/loadParking';
 import loadRoute from '../loaders/loadRoute';
+import loadPOI from '../loaders/loadPOI';
 import removeLayerAction from '../redux/actions/RemoveLayerAction';
 import addLayerAction from '../redux/actions/AddLayerAction';
 import loadBikeRenting from '../loaders/loadBikeRenting';
@@ -32,6 +33,7 @@ const mapStateToProps = (state) => {
 		loadLocation,
 		loadParking,
 		loadBikeRenting,
+		loadPOI,
 		...state.map
 	});
 };

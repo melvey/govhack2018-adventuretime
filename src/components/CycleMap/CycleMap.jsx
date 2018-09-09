@@ -15,8 +15,8 @@ class CycleMap extends Component {
 		}),
 		//bikeRenting
 		loadLocation: PropTypes.func,
-		loadBikeRenting: PropTypes.func
-
+		loadBikeRenting: PropTypes.func,
+		loadPOI: PropTypes.func
 	};
 
 	constructor(props) {
@@ -37,6 +37,7 @@ class CycleMap extends Component {
 
 		this.props.loadParking();
 		this.props.loadBikeRenting();
+		this.props.loadPOI();
 	}
 
 	componentDidUpdate() {
@@ -76,6 +77,28 @@ class CycleMap extends Component {
 		return markers;
 	}
 
+	showPOI = (poi) => {
+			if(this.state.layerData.poi) {
+					this.state.layerData.poi.forEach((marker) => marker.remove());
+			}
+
+			var bikeMarker = L.AwesomeMarkers.icon({
+					// icon: 'bicycle',
+					icon: 'coffee',
+					prefix: 'fa',
+					markerColor: 'beige',
+					iconColor: 'black'
+					// className: 'awesome-marker awesome-marker-square'
+			});
+			const markers = poi.map((point) => {
+					const marker = L.marker([point.lat, point.lon], {icon: bikeMarker});
+					marker.addTo(this.state.map);
+					return marker;
+			});
+
+			return markers;
+	}
+
 	showRoute = (route) => {
 
 		if(this.state.directionLine) {
@@ -86,7 +109,7 @@ class CycleMap extends Component {
 			leg.steps.map((step) => new L.LatLng(step.intersections[0].location[1], step.intersections[0].location[0]))
 		);
 		const polylinePoints = [].concat.apply([], legs);
-	 
+
 	 var polylineOptions = {
 				 color: 'blue',
 				 weight: 6,
@@ -95,7 +118,7 @@ class CycleMap extends Component {
 
 	 var polyline = new L.Polyline(polylinePoints, polylineOptions);
 
-	 this.state.map.addLayer(polyline);                        
+	 this.state.map.addLayer(polyline);
 
 	 // zoom the map to the polyline
 	 this.state.map.fitBounds(polyline.getBounds());
@@ -118,6 +141,10 @@ class CycleMap extends Component {
 			if(layer === 'rental') {
 				console.log('rental', this.props.rental);
 				layerData.rental = this.showBikeRenting(this.props.bikeRenting);
+			}
+			if(layer === 'poi') {
+				console.log('poi', this.props.poi);
+				layerData.poi = this.showPOI(this.props.poi);
 			}
 		});
 
@@ -179,7 +206,7 @@ class CycleMap extends Component {
 			height: `${this.state.height - this.headerHeight - this.footerHeight}px`,
 			width: `${this.state.width}px`
 		};
-		
+
 		return this.state.height && this.state.width
 		? ( <div id="cyclemap" style={styles} className={styles.container}> </div>)
 		: null;
