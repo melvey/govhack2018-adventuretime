@@ -1,0 +1,15 @@
+@import '../variables.scss';
+
+.container {
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
+  width: 100%;
+  background-color: #ffffffdd;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-around;
+  align-content: start;
+  overflow-y: scroll;
+}
