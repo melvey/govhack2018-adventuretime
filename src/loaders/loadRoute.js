@@ -1,7 +1,7 @@
 import store from '../redux/store';
 import setRouteAction from '../redux/actions/SetRouteAction';
 
-const urlBase = 'http://router.project-osrm.org/route/v1/driving/';
+const urlBase = 'https://router.project-osrm.org/route/v1/driving/';
 
 function loadRoute(coords) {
 	const coordString = coords.reduce((current, coord) => `${current ? `${current};` : ''}${coord.latitude || coord[0]},${coord.longitude || coord[0]}`, '');
