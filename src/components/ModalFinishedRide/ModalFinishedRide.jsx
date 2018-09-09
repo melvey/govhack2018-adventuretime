@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './ModalFinishedRide.scss';
 
+const weeklyRecomendation = 150;
+
 class ModalFinishedRide extends Component {
 
 	static propTypes = {

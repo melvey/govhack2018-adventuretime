@@ -1,0 +1,22 @@
+{
+	"proportion-sufficient-week": {
+		"inactve": 20.3,
+		"insufficient": 35.7,
+		"sufficient": 43.0,
+		"total": 100
+	},
+	"number-sufficient-week": {
+		"inactve": 3463.7,
+		"insufficient": 6076.1,
+		"sufficient": 7333.2,
+		"total": 17042.2
+	},
+	"average-time-physical": {
+		"walking-transport": 83,
+		"walking-fitness": 61,
+		"moderate": 27,
+		"vigorous": 58,
+		"total": 228
+	},
+	"total-participants": 17042.2
+}
