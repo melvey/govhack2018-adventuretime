@@ -1,7 +1,0 @@
-@import '../variables.scss';
-
-// This *brilliant* library overrides any classes that are set because... it's brilliant
-:global(.leaflet-container) {
-	z-index: $layer-base;
-}
-
