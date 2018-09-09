@@ -68,6 +68,7 @@ function handleShowParking(state, data) {
 */
 
 function handleSetRoute(state, data) {
+	console.log(data);
 	let routeData = data;
 	if(routeData.message === 'Too Many Requests') {
 			routeData = fudgedRoute;

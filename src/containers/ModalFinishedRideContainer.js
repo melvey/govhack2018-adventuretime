@@ -4,7 +4,7 @@ import ModalFinishedRide from '../components/ModalFinishedRide';
 const mapStateToProps = (state) => ({
 	// Modify this to only include the required properties
 	...state.ride,
-	...state.map.route
+	route: state.map.route
 });
 
 
