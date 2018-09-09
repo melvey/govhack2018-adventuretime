@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Header.scss';
 import {Link} from 'react-router-dom';
 import logo from './logo.png';
+import HeaderSearch from '../HeaderSearch';
 import Menu from '../Menu';
 
 class Header extends Component {
@@ -38,7 +39,7 @@ class Header extends Component {
               <div className={styles.bar3}></div>
             </div>
 						<div className={styles.banner}>
-							<h1 className={styles.bannerTitle}>React</h1>
+              <HeaderSearch className="search"/>
 							<Menu active={active} />
 						</div>
 					</div>

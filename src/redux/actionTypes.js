@@ -7,8 +7,11 @@ export default {
 	setDummy: 'setDummy',
 	toggleMenu: 'toggleMenu',
 	setLocation: 'setLocation',
+	setToLocation: 'setToLocation',
+	setFromLocation: 'setFromLocation',
 	setParking: 'setParking',
 	showParking: 'showParking',
 	setBikeRenting: 'setBikeRenting',
-	showBikeRenting: 'showBikeRenting'
+	showBikeRenting: 'showBikeRenting',
+	setRoute: 'setRoute'
 };

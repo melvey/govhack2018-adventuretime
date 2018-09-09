@@ -1,0 +1,73 @@
+@import '../variables.scss';
+
+h1 {
+  font-size: 1em;
+}
+.container > div {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  grid-column-gap: 1em;
+  grid-row-gap: 4px;
+  font-size: 1em;
+  justify-content: center;
+  align-items: center;
+}
+.container .search {
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 50px;
+  margin-left: 80px;
+}
+.search input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+}
+.closeSearch {
+  grid-column:  -2 / -1;
+  grid-row: 1 / 3;
+}
+.difficultyList {
+  grid-column: 1 / -2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+}
+.difficultyList button {
+  display: block;
+  margin: 0 20px;
+  border-radius: 8px;
+}
+.difficultyList button.active {
+  background-color: white;
+  color: $red-base;
+}
+.locOptionsList {
+  position:absolute;
+  top: $header-height;
+  left: 0;
+  width: 100%;
+  z-index: 600;
+  background-color: white;
+  color: $red-base;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.locOptionsList > div {
+  grid-column: 1 / -1;
+  display:grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-around;
+  cursor: pointer;
+}

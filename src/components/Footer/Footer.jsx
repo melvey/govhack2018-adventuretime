@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Footer.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Footer extends Component {
 
@@ -20,10 +21,18 @@ class Footer extends Component {
 		return (
 				<div className={styles.root}>
 					<div className={styles.container}>
-						<div className={styles.banner}>
-							<h3 className={styles.bannerTitle}>Team Death Clock</h3>
-							<p className={styles.bannerDesc}>Made for GovHack 2018</p>
-						</div>
+						<button>
+							<FontAwesomeIcon icon="heart" />
+							Save
+						</button>
+						<button>
+							<FontAwesomeIcon icon="plus" />
+							Add
+						</button>
+							<button>
+							<FontAwesomeIcon icon="check" />
+							Start
+						</button>
 					</div>
 				</div>
 		);

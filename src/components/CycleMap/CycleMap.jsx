@@ -31,6 +31,7 @@ class CycleMap extends Component {
 		const width = window.innerWidth;
 		this.setState({width, height, addMap: true});
 		this.props.loadLocation();
+
 		this.props.loadParking();
         this.props.loadBikeRenting();
 	}
@@ -83,12 +84,40 @@ class CycleMap extends Component {
         this.setState({bikeRentingMarkers: markers});
     }
 
+	showRoute = (route) => {
+
+		if(this.state.directionLine) {
+			this.state.directionLine.remove();
+		}
+
+		const legs = route.routes[0].legs.map((leg) =>
+			leg.steps.map((step) => new L.LatLng(step.intersections[0].location[1], step.intersections[0].location[0]))
+		);
+		const polylinePoints = [].concat.apply([], legs);
+	 
+	 var polylineOptions = {
+				 color: 'blue',
+				 weight: 6,
+				 opacity: 0.9
+			 };
+
+	 var polyline = new L.Polyline(polylinePoints, polylineOptions);
+
+	 this.state.map.addLayer(polyline);                        
+
+	 // zoom the map to the polyline
+	 this.state.map.fitBounds(polyline.getBounds());
+
+	this.setState({directionLine: polyline});
+	}
+
 	componentWillReceiveProps(props) {
 		if(this.props.location != props.location && this.state.map) {
 			this.state.map.setView([props.location.latitude, props.location.longitude], 13);
 		}
 
-		if(this.props.parking != props.parking && this.state.map) {
+		if(this.props.route != props.route && this.state.map) {
+			this.showRoute(props.route);
 			this.showParking(props.parking);
 		}
 
