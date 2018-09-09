@@ -121,7 +121,7 @@ class CycleMap extends Component {
 	 this.state.map.addLayer(polyline);
 
 	 // zoom the map to the polyline
-	 this.state.map.fitBounds(polyline.getBounds());
+	 //this.state.map.fitBounds(polyline.getBounds());
 
 	this.setState({directionLine: polyline});
 	}
