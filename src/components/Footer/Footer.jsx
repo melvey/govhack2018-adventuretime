@@ -6,7 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class Footer extends Component {
 
 	static propTypes = {
-		className: PropTypes.string
+		className: PropTypes.string,
+		startRide: PropTypes.func,
+		stopRide: PropTypes.func,
+		closeDialog: PropTypes.func,
+		startTime: PropTypes.number
 	};
 
 	constructor(props) {
@@ -17,7 +21,18 @@ class Footer extends Component {
 	}
 
 	render() {
+
 		const className = this.props.className ? `${styles.content} ${this.props.className}` : styles.content;
+
+		let statusBtn = undefined;
+		if(this.props.showComplete) {
+			statusBtn = (<button onClick={this.props.closeDialog}><FontAwesomeIcon icon="times" />Close</button>);
+		} else if(this.props.startTime) { 
+			statusBtn = (<button onClick={this.props.stopRide}><FontAwesomeIcon icon="flag-checkered" />Stop</button>);
+		} else {
+			statusBtn = (<button onClick={this.props.startRide}><FontAwesomeIcon icon="check" />Start</button>);
+		}
+
 		return (
 				<div className={styles.root}>
 					<div className={styles.container}>
@@ -29,10 +44,7 @@ class Footer extends Component {
 							<FontAwesomeIcon icon="plus" />
 							Add
 						</button>
-							<button>
-							<FontAwesomeIcon icon="check" />
-							Start
-						</button>
+						{statusBtn}
 					</div>
 				</div>
 		);

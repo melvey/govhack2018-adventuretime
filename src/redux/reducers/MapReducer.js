@@ -138,6 +138,7 @@ function handleShowBikeRenting(data) {
 }
 */
 
+
 export default function setmapReducer(state, action) {
 	switch(action.type) {
 		case actionTypes.setLocation:

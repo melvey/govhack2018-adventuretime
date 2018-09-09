@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Route, Switch} from 'react-router-dom';
 import Header from '../../containers/HeaderContainer';
-import Footer from '../Footer';
+import Footer from '../../containers/FooterContainer';
 import styles from './App.scss';
 import Index from '../Index';
 import About from '../About';

@@ -5,7 +5,8 @@ import styles from './ModalFinishedRide.scss';
 class ModalFinishedRide extends Component {
 
 	static propTypes = {
-		className: PropTypes.string
+		className: PropTypes.string,
+		showComplete: PropTypes.bool
 	};
 
 	constructor(props) {
@@ -15,7 +16,7 @@ class ModalFinishedRide extends Component {
 		this.state = {};
 	}
 
-	render() {
+	renderModal() {
 		const className = this.props.className ? `${styles.content} ${this.props.className}` : styles.content;
 		return (
 			<div className={styles.container}>
@@ -25,6 +26,14 @@ class ModalFinishedRide extends Component {
 				<p>Keep it up to feel even better :)</p>
 			</div>
 		);
+	}
+
+	render() {
+		if(this.props.showComplete) {
+			return this.renderModal();
+		}
+
+		return null;
 	}
 
 }

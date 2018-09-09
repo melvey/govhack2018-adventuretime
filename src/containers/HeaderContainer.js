@@ -4,7 +4,6 @@ import store from '../redux/store';
 import toggleMenuAction from '../redux/actions/ToggleMenuAction';
 
 function menuFunc() {
-	console.log('open clicked');
 	store.dispatch(toggleMenuAction());
 }
 
