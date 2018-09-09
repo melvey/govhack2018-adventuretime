@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import preloadStore from './redux/preloadStore';
 import indexTemplate from './views/index.pug';
-//import App from './components/App';
+import App from './components/App';
 import config from './config/general';
 
 const status = {
@@ -32,7 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('*', async (req, res) => {
 
-/*
 	preloadStore(store, req.originalUrl, req.user)
 		.then((loadedStore) => {
 			const context = {};
@@ -46,10 +45,11 @@ app.use('*', async (req, res) => {
 			console.error(err);
 			res.status(status.error).send('Server error loading page');
 		});
-*/
+	/*
 	const variables = {...pugConfig, content: '', basePath: config.basePath, state: JSON.stringify(store.getState())};
 	const html = indexTemplate(variables);
 	res.status(status.success).send(html);
+	*/
 
 });
 
