@@ -1,7 +1,7 @@
 import store from '../redux/store';
 import setParkingAction from '../redux/actions/SetParkingAction';
 
-const url = 'https://nominatim.openstreetmap.org/search?q=Darwin%20Cycle%20Parking&format=json';
+const url = 'https://nominatim.openstreetmap.org/search?q=Darwin%20Cycle%20Parking&format=json&dedupe=0';
 
 function loadParking() {
 	fetch(url)
