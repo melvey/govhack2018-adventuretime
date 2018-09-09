@@ -8,5 +8,7 @@ export default {
 	toggleMenu: 'toggleMenu',
 	setLocation: 'setLocation',
 	setParking: 'setParking',
-	showParking: 'showParking'
+	showParking: 'showParking',
+	setBikeRenting: 'setBikeRenting',
+	showBikeRenting: 'showBikeRenting'
 };

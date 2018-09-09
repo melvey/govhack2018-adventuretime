@@ -24,18 +24,6 @@ class CycleMap extends Component {
 
 		this.props = props;
 		this.state = {};
-
-		this.bikeRenting = [
-            [-12.465502788900000, 130.840680072000000],
-            [-12.466498190400000, 130.846449730000000],
-            [-12.459216000000000, 130.840796000000000],
-            [-12.461004000000000, 130.835717500000000],
-            [-12.465282139300000, 130.843246538000000],
-            [-12.467171624300000, 130.846382685000000],
-            [-12.466721974900000, 130.848451717000000],
-            [-12.376958903300000, 130.848133823000000],
-            [-12.463160000000000, 130.838546000000000]
-        ];
 	}
 
 	componentDidMount() {
@@ -44,6 +32,7 @@ class CycleMap extends Component {
 		this.setState({width, height, addMap: true});
 		this.props.loadLocation();
 		this.props.loadParking();
+        this.props.loadBikeRenting();
 	}
 
 	componentDidUpdate() {

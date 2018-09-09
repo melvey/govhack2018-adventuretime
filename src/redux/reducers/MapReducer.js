@@ -39,6 +39,26 @@ function handleShowParking(data) {
 	);
 }
 
+function handleSetBikeRenting(state, data) {
+    return Object.assign(
+        {},
+        state,
+        {
+            bikeRenting: data
+        }
+    );
+}
+
+function handleShowBikeRenting(data) {
+    return Object.assign(
+        {},
+        state,
+        {
+            showBikeRenting: data
+        }
+    );
+}
+
 export default function setmapReducer(state, action) {
 	switch(action.type) {
 		case actionTypes.setLocation:
@@ -47,6 +67,10 @@ export default function setmapReducer(state, action) {
 			return handleSetParking(state, action.payload);
 		case actionTypes.showParking:
 			return handleShowParking(state, action.payload);
+        case actionTypes.setBikeRenting:
+            return handleSetBikeRenting(state, action.payload);
+        case actionTypes.showBikeRenting:
+            return handleShowBikeRenting(state, action.payload);
 		default:
 			return state || {};
 	}
